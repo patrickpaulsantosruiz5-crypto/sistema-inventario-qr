@@ -1,0 +1,17 @@
+import qrcode
+
+data = "PROD-001: Taladro Percutor Inalámbrico - Stock: 15 unidades"
+
+qr = qrcode.QRCode(
+    version=1,
+    error_correction=qrcode.constants.ERROR_CORRECT_M,
+    box_size=10,
+    border=4,
+)
+qr.add_data(data)
+qr.make(fit=True)
+
+img = qr.make_image(fill_color="black", back_color="white")
+img.save("codigo_qr_producto.png")
+
+print("¡Código QR generado exitosamente!")
